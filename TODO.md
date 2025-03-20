@@ -42,16 +42,16 @@
 
 4. **Problem Solving**:
 
-   - Problem Statement:
-     - A borrower repays a loan in monthly installments. Each installment falls into one of three categories:
-       - `"On Time"` → If the payment is made within 5 days of the due date. (GREEN)
-       - `"Late"` → If the payment is made between 6 and 30 days after the due date. (ORANGE)
-       - `"Defaulted"` → If the payment is more than 30 days late. (RED)
-       - `"Unpaid"` is included for cases where there is no payment date. (GREY)
-   - Task:
-     - Write a function that categorizes loan payments and returns a new list/array where each payment including existing loan information is combined & categorized as "On Time", "Late", "Defaulted" or "Unpaid".
-     - You should not use any external libraries.
-     - NOTE: When displaying these on the UI - use the colors next to each status as a visual indication.
+   - [x] Problem Statement:
+     - [x] A borrower repays a loan in monthly installments. Each installment falls into one of three categories:
+       - [x] `"On Time"` → If the payment is made within 5 days of the due date. (GREEN)
+       - [x] `"Late"` → If the payment is made between 6 and 30 days after the due date. (ORANGE)
+       - [x] `"Defaulted"` → If the payment is more than 30 days late. (RED)
+       - [x] `"Unpaid"` is included for cases where there is no payment date. (GREY)
+   - [x] Task:
+     - [x] Write a function that categorizes loan payments and returns a new list/array where each payment including existing loan information is combined & categorized as "On Time", "Late", "Defaulted" or "Unpaid".
+     - [x] You should not use any external libraries.
+     - [x] NOTE: When displaying these on the UI - use the colors next to each status as a visual indication.
 
    **Expected Output**:
 
