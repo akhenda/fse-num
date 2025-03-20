@@ -12,12 +12,23 @@
      - [ ] Setup ts path aliases for the web app
      - [ ] Make the ts paths work with vite
      - [ ] Properly setup linting with prettier and eslint
+       - [x] Add prettier to dev deps
+         - [x] Add prettierrc file
+       - [ ] Add a few eslint plugins for better DX
+         - [x] eslint-config-prettier
+         - [x] eslint-plugin-prettier
+         - [x] eslint-plugin-react
+         - [x] eslint-plugin-import
+         - [x] eslint-plugin-simple-import-sort
+         - [x] eslint-plugin-sonarjs
+         - [ ] eslint-plugin-testing-library
+         - [x] eslint-plugin-unused-imports
      - [ ] Add `.vscode` settings for auto formatting
 
 2. **GraphQL Data Refactor & Fetching**:
-   - Update GraphQL Schema to expose loan_payments
+   - [ ] Update GraphQL Schema to expose loan_payments
      - (Note the GraphIQL tool can be useful for debugging by visiting localhost:2024/grqphql in your browser)
-   - Consume the updated graphql schema from the web app
+   - [ ] Consume the updated graphql schema from the web app
 
 3. **Web App Fetch & Render**:
    - Update the web app to consume the loan and loanPayment data from the server
