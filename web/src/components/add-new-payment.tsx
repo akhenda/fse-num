@@ -50,6 +50,12 @@ export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddN
 
   function onSubmit(values: FormSchema) {
     addPayment({ loanId: values.loanId, paymentDate: values.date });
+
+    // Reload the page after 2.5 seconds
+    // TODO: Find a better way. Maybe optimistic UI or use graphql subscriptiosn to update the payments table
+    setTimeout(() => {
+      window.location.reload();
+    }, 2500);
   }
 
   useEffect(() => {
