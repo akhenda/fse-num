@@ -8,10 +8,10 @@
      - [x] Fix the loans query
    - [x] Setup the web app
      - [x] Install deps and run it
-   - [ ] Some best practises
+   - [x] Some best practises
      - [ ] Quickly set up the repo with `commitlint` & `cz-git` and ai commits
-     - [ ] Setup ts path aliases for the web app
-     - [ ] Make the ts paths work with vite
+     - [x] Setup ts path aliases for the web app
+     - [x] Make the ts paths work with vite
      - [x] Properly setup linting with prettier and eslint
        - [x] Add prettier to dev deps
          - [x] Add prettierrc file
@@ -37,8 +37,8 @@
    - [x] Update the web app to consume the loan and loanPayment data from the server
    - [x] Note that `npm run compile` will update the generated typescript types within the `__generated__` folder.
      - [x] Watch GraphQL changes
-   - [ ] Display this data together using well-designed components & conditional styling
-     - [ ] Setup tailwind & shadcn for styling
+   - [x] Display this data together using well-designed components & conditional styling
+     - [x] Setup tailwind & shadcn for styling
 
 4. **Problem Solving**:
 
@@ -107,7 +107,7 @@
 
    - [x] Build a REST Endpoint on the server that adds payments to the payments list. Use this endpoint in the web application's AddPayment component to make the call.
    - [x] Implement a loading spinner or some form of feedback while data is being fetched or the form is being submitted.
-   - [ ] Add error handling for both the GraphQL query and the REST API call.
+   - [x] Add error handling for both the GraphQL query and the REST API call.
    - [ ] Any form of tests (unit/functional)
    - [ ] Note down additional suggestions, given more time
    - [x] Recording of your project

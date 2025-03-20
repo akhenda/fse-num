@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CalendarIcon } from 'lucide-react';
 import * as z from 'zod';
 
+import { useAddLoanPayment } from '@/api/rest/resources';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -15,7 +17,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { logger } from '@/lib/logger';
 import { cn } from '@/lib/utils';
 
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
@@ -40,14 +41,22 @@ type FormSchema = z.infer<typeof formSchema>;
 type AddNewPaymentProps = { inDialog?: boolean; date?: Date; loanId?: number | string };
 
 export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddNewPaymentProps) {
+  const { mutate: addPayment, isPending } = useAddLoanPayment();
   const form = useForm<FormSchema>({
+    defaultValues: { date, loanId } as unknown as FormSchema,
     resolver: zodResolver(formSchema),
-    defaultValues: { loanId, date } as unknown as FormSchema,
   });
 
   function onSubmit(values: FormSchema) {
-    logger.success('Values:', values.date, values.loanId);
+    addPayment({ loanId: values.loanId, paymentDate: values.date });
   }
+
+  useEffect(() => {
+    if (loanId) {
+      form.setFocus('date');
+      form.reset({ loanId: Number(loanId) });
+    }
+  }, [form, loanId]);
 
   return (
     <div className={cn('p-4', { 'p-0': inDialog })}>
@@ -121,7 +130,8 @@ export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddN
               isLoading={
                 form.formState.isSubmitting ||
                 form.formState.isLoading ||
-                form.formState.isValidating
+                form.formState.isValidating ||
+                isPending
               }
             >
               Add Payment
