@@ -7,11 +7,11 @@
    - [ ] Setup the web app
      - [ ] Install deps and run it
    - [ ] Some best practises
-     - [ ] Quickly set up the repo with commitlint & cz-git and ai commits
+     - [ ] Quickly set up the repo with `commitlint` & `cz-git` and ai commits
      - [ ] Setup ts path aliases for the web app
      - [ ] Make the ts paths work with vite
      - [ ] Properly setup linting with prettier and eslint
-     - [ ] Add .vscode settings for auto formatting
+     - [ ] Add `.vscode` settings for auto formatting
 
 2. **GraphQL Data Refactor & Fetching**:
    - Update GraphQL Schema to expose loan_payments
