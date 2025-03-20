@@ -7,7 +7,7 @@ export function Payments() {
   const { data, error } = useGetLoanPayments();
 
   if (error) return <ErrorState error={error} />;
-  if (!data || !data.loanPayments) return <EmptyState resource="loans" />;
+  if (!data || !data.loanPayments) return <EmptyState resource="payments" />;
 
   return (
     <div>
