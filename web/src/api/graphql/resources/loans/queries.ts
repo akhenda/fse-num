@@ -1,4 +1,4 @@
-import { gql } from '../../../../__generated__';
+import { gql } from '@generated/gql';
 
 export const GET_LOANS = gql(`
   query GetLoans {
