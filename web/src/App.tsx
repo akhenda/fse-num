@@ -21,6 +21,7 @@ export default function App() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>
+                  <img src="/favicon.svg" alt="Numida Logo" className="h-6 w-6" />
                   <BreadcrumbPage className="line-clamp-1">Numida</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>

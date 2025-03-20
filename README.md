@@ -1,10 +1,14 @@
 ![Numida](./logo.numida.png)
 
-# Setup
+# Assessment
+
+![Demo](./demo.png)
+
+## Setup
 
 The project was migrated to PNPM Package Manager from NPM to work well with ShadCN Ui lib. To set it up, follow the official instructions [here](https://pnpm.io/installation)
 
-## Server
+### Server
 
 To run the server, change to the server directory then run:
 
@@ -12,7 +16,7 @@ To run the server, change to the server directory then run:
 docker compose up --build
 ```
 
-## Web
+### Web
 
 To run the web app, run:
 
@@ -44,11 +48,11 @@ To run tests, run:
 pnpm run test
 ```
 
-## Notes
+### Notes
 
 The server stores the loans and loan_payments in-memory, so the data you work with will be reset the the initial states each time the server is restarted.
 
-### Improvements
+#### Improvements
 
 Given time, I would implement the following:
 
