@@ -1,4 +1,5 @@
 /* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -42,3 +43,17 @@ export type Query = {
   loanPayments?: Maybe<Array<Maybe<ExistingLoanPayments>>>;
   loans?: Maybe<Array<Maybe<ExistingLoans>>>;
 };
+
+export type GetLoansQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLoansQuery = { __typename?: 'Query', loans?: Array<{ __typename?: 'ExistingLoans', id?: number | null, name?: string | null, principal?: number | null, interestRate?: number | null, dueDate?: any | null } | null> | null };
+
+export type GetLoanPaymentsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetLoanPaymentsQuery = { __typename?: 'Query', loanPayments?: Array<{ __typename?: 'ExistingLoanPayments', id?: number | null, loanId?: number | null, paymentDate?: any | null } | null> | null };
+
+
+export const GetLoansDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLoans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"loans"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"principal"}},{"kind":"Field","name":{"kind":"Name","value":"interestRate"}},{"kind":"Field","name":{"kind":"Name","value":"dueDate"}}]}}]}}]} as unknown as DocumentNode<GetLoansQuery, GetLoansQueryVariables>;
+export const GetLoanPaymentsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetLoanPayments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"loanPayments"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"loanId"}},{"kind":"Field","name":{"kind":"Name","value":"paymentDate"}}]}}]}}]} as unknown as DocumentNode<GetLoanPaymentsQuery, GetLoanPaymentsQueryVariables>;
