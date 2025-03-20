@@ -4,6 +4,14 @@
 
 ![Demo](./demo.png)
 
+## Approach
+
+1. **Production-Ready Setup:** I implemented best practices for linting and Developer Experience (DX), opting to use PNPM for package management. I included detailed setup instructions in the README.
+2. **Tailwind & ShadCN UI:** I used TailwindCSS and ShadCN to quickly build a modern and responsive interface with a streamlined developer experience.
+3. **Separation of Concerns:** Business logic, data fetching (API), and presentation logic are structured into distinct layers to keep the code clean and maintainable.
+4. **Smooth User Experience:** React Suspense and UI skeletons ensure smooth transitions between data fetching states.
+5. **Centralized Logging:** A thin wrapper on top of console.log using consola helps unify and future-proof our logging strategy.
+
 ## Setup
 
 The project was migrated to PNPM Package Manager from NPM to work well with ShadCN Ui lib. To set it up, follow the official instructions [here](https://pnpm.io/installation)
