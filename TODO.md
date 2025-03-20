@@ -1,11 +1,12 @@
 # TODO/Approach
 
 1. **Setup**: All the resources you require to do this assessment will be provided along with this README.
-   - [ ] Check and update docker
-   - [ ] Setup and run the server
-     - [ ] `docker compose up --build`
-   - [ ] Setup the web app
-     - [ ] Install deps and run it
+   - [x] Check and update docker
+   - [x] Setup and run the server
+     - [x] `docker compose up --build`
+     - [x] Fix the loans query
+   - [x] Setup the web app
+     - [x] Install deps and run it
    - [ ] Some best practises
      - [ ] Quickly set up the repo with `commitlint` & `cz-git` and ai commits
      - [ ] Setup ts path aliases for the web app
