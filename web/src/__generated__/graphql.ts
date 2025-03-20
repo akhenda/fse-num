@@ -13,10 +13,24 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  /**
+   * The `Date` scalar type represents a Date
+   * value as specified by
+   * [iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+   */
+  Date: { input: any; output: any; }
+};
+
+export type ExistingLoanPayments = {
+  __typename?: 'ExistingLoanPayments';
+  id?: Maybe<Scalars['Int']['output']>;
+  loanId?: Maybe<Scalars['Int']['output']>;
+  paymentDate?: Maybe<Scalars['Date']['output']>;
 };
 
 export type ExistingLoans = {
   __typename?: 'ExistingLoans';
+  dueDate?: Maybe<Scalars['Date']['output']>;
   id?: Maybe<Scalars['Int']['output']>;
   interestRate?: Maybe<Scalars['Float']['output']>;
   name?: Maybe<Scalars['String']['output']>;
@@ -25,5 +39,6 @@ export type ExistingLoans = {
 
 export type Query = {
   __typename?: 'Query';
+  loanPayments?: Maybe<Array<Maybe<ExistingLoanPayments>>>;
   loans?: Maybe<Array<Maybe<ExistingLoans>>>;
 };

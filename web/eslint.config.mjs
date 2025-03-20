@@ -9,7 +9,7 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const ignores = ['dist', '**/*.md'];
+const ignores = ['dist', '**/*.md', 'codegen.ts'];
 
 export default tseslint.config(
   { ignores: [...ignores] },
