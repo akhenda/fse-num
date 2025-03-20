@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/sidebar';
 
 import { AddNewPayment } from './add-new-payment';
-import { LoanCalculator } from './LoanCalculator';
+import { LoanCalculatorWidget } from './loan-calculator-widget';
 
 // This is sample data.
 const data = {
@@ -38,7 +38,7 @@ export function SidebarRight({ ...props }: React.ComponentProps<typeof Sidebar>)
       <SidebarContent>
         <AddNewPayment />
         <SidebarSeparator className="mx-0" />
-        <LoanCalculator principal={50000} rate={5} months={12} />
+        <LoanCalculatorWidget />
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

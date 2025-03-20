@@ -1,5 +1,5 @@
-import { Loans } from './Loans';
-import { Payments } from './Payments';
+import { Loans } from './loans';
+import { Payments } from './payments';
 
 export function LoansAndPayments() {
   return (

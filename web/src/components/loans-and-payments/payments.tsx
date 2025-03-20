@@ -1,7 +1,7 @@
 import { useGetLoanPayments } from '@/api/graphql/resources';
 
-import { EmptyState } from './EmptyState';
-import { ErrorState } from './ErrorState';
+import { EmptyState } from './empty-state';
+import { ErrorState } from './error-state';
 
 export function Payments() {
   const { data, error } = useGetLoanPayments();

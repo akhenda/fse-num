@@ -105,18 +105,18 @@
 
 6. **Bonus**:
 
-   - Build a REST Endpoint on the server that adds payments to the payments list. Use this endpoint in the web application's AddPayment component to make the call.
-   - Implement a loading spinner or some form of feedback while data is being fetched or the form is being submitted.
-   - Add error handling for both the GraphQL query and the REST API call.
-   - Any form of tests (unit/functional)
-   - Note down additional suggestions, given more time
-   - Recording of your project
+   - [ ] Build a REST Endpoint on the server that adds payments to the payments list. Use this endpoint in the web application's AddPayment component to make the call.
+   - [ ] Implement a loading spinner or some form of feedback while data is being fetched or the form is being submitted.
+   - [ ] Add error handling for both the GraphQL query and the REST API call.
+   - [ ] Any form of tests (unit/functional)
+   - [ ] Note down additional suggestions, given more time
+   - [ ] Recording of your project
 
 7. **Submission**:
 
-   - Ensure your code is well-documented and formatted.
-   - Push your code to your GitHub repository.
-   - Provide a link to your repository and a brief description of your approach.
+   - [ ] Ensure your code is well-documented and formatted.
+   - [ ] Push your code to your GitHub repository.
+   - [ ] Provide a link to your repository and a brief description of your approach.
 
 8. **Follow-Up Questions**:
    - Be prepared to explain your code, discuss your approach, and suggest improvements during a follow-up session.
