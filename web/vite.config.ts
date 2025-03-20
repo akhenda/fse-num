@@ -8,11 +8,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src'),
-      '@api': path.resolve(__dirname, '../src/api'),
-      '@assets': path.resolve(__dirname, '../src/assets'),
-      '@components': path.resolve(__dirname, '../src/components'),
-      '@generated': path.resolve(__dirname, '../src/api/graphql/__generated__'),
+      '@': path.resolve(__dirname, './src'),
+      '@api': path.resolve(__dirname, './src/api'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@generated': path.resolve(__dirname, './src/api/graphql/__generated__'),
     },
   },
 });

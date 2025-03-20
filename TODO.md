@@ -30,13 +30,15 @@
 
    - [x] Update GraphQL Schema to expose loan_payments
      - (Note the GraphIQL tool can be useful for debugging by visiting localhost:2024/grqphql in your browser)
-   - [ ] Consume the updated graphql schema from the web app
+   - [x] Consume the updated graphql schema from the web app
 
 3. **Web App Fetch & Render**:
 
-   - Update the web app to consume the loan and loanPayment data from the server
-   - Display this data together using well-designed components & conditional styling
-   - Note that `npm run compile` will update the generated typescript types within the `__generated__` folder.
+   - [x] Update the web app to consume the loan and loanPayment data from the server
+   - [x] Note that `npm run compile` will update the generated typescript types within the `__generated__` folder.
+     - [x] Watch GraphQL changes
+   - [ ] Display this data together using well-designed components & conditional styling
+     - [ ] Setup tailwind & shadcn for styling
 
 4. **Problem Solving**:
 
