@@ -1,4 +1,4 @@
-import { AddNewPayment } from './components/AddNewPayment';
+import { AddNewPayment } from './components/add-new-payment';
 import { LoansAndPayments } from './components/LoansAndPayments';
 import { Button } from './components/ui/button';
 

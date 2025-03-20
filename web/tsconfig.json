@@ -6,6 +6,7 @@
       "@api/*": ["./src/api/*"],
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
       "@generated/*": ["./src/api/graphql/__generated__/*"]
     }
   },
