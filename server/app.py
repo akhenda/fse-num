@@ -1,5 +1,5 @@
 import datetime
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_graphql import GraphQLView
 from flask_cors import CORS
 import graphene
@@ -45,6 +45,18 @@ loan_payments = [
 ]
 
 
+def validate_loan_exists(loan_id):
+    """
+    Returns True if the loan with the given loan_id exists in the loans list,
+    otherwise returns False.
+    """
+    for loan in loans:
+        if loan["id"] == loan_id:
+            return True
+
+    return False
+
+
 class ExistingLoans(graphene.ObjectType):
     id = graphene.Int()
     name = graphene.String()
@@ -81,6 +93,42 @@ app.add_url_rule(
 @app.route("/")
 def home():
     return "Welcome to the Loan Application API"
+
+
+@app.route("/loans/<loan_id>/payments", methods=["POST"])
+def add_loan_payment(loan_id):
+    """
+    Endpoint to add a new payment for a given loan.
+    Expects a JSON payload with "payment_date".
+    For example:
+    { "payment_date": "2025-05-01" }
+    """
+    if not validate_loan_exists(int(loan_id)):
+        return jsonify({"error": f"Loan with id {loan_id} does not exist"}), 404
+
+    data = request.get_json()
+    if not data or "payment_date" not in data:
+        return jsonify({"error": "Missing 'payment_date' in request payload"}), 400
+
+    try:
+        payment_date = datetime.datetime.strptime(data["payment_date"], "%Y-%m-%d").date()
+    except:
+        return jsonify({"error": "Invalid date format. Expected YYYY-MM-DD."}), 400
+
+    if loan_payments:
+        new_id = max(payment["id"] for payment in loan_payments) + 1
+    else:
+        new_id = 1
+
+    new_payment = {
+        "id": new_id,
+        "loan_id": int(loan_id),
+        "payment_date": payment_date,
+    }
+
+    loan_payments.append(new_payment)
+
+    return jsonify(new_payment), 201
 
 
 if __name__ == "__main__":
