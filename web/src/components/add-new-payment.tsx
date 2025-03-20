@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CalendarIcon } from 'lucide-react';
 import * as z from 'zod';
 
-import { useAddLoanPayment } from '@/api/rest/resources';
+import { useAddLoanPayment } from '@/api';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
@@ -30,9 +30,10 @@ const formSchema = z.object({
       .number({
         required_error: 'Loan ID is required',
         invalid_type_error: 'Loan ID must be a number',
+        message: 'Loan ID must be a number',
       })
       .int()
-      .positive()
+      .positive({ message: 'Loan ID should be a positive integer' })
       .min(1, { message: 'Loan ID should be at least 1' }),
   ),
 });
@@ -53,14 +54,13 @@ export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddN
 
   useEffect(() => {
     if (loanId) {
-      form.setFocus('date');
       form.reset({ loanId: Number(loanId) });
     }
   }, [form, loanId]);
 
   return (
     <div className={cn('p-4', { 'p-0': inDialog })}>
-      <h3 className="text-base mb-3 font-bold">Add New Payment</h3>
+      {!inDialog && <h3 className="text-base font-bold mb-3">Add New Payment</h3>}
       <Form {...form}>
         <form
           noValidate
@@ -94,6 +94,7 @@ export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddN
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
+                        aria-label="date-button"
                         variant="outline"
                         className={cn(
                           'w-full pl-3 text-left font-normal',

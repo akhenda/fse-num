@@ -60,3 +60,4 @@ Given time, I would implement the following:
 - Maybe setup a Persister for tanstack query for `local-first` architecure.
   - `@tanstack/react-query-persist-client`
   - `@tanstack/query-async-storage-persister`
+- Move the compose file out of `server` to the root of the repo and configure the web app as a docker service in the compose file so that the tech stack can be spun up all at once.

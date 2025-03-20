@@ -1,3 +1,5 @@
+/// <reference types="vitest/config" />
+
 import path from 'path';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -16,5 +18,11 @@ export default defineConfig({
       '@lib': path.resolve(__dirname, './src/lib'),
       '@generated': path.resolve(__dirname, './src/api/graphql/__generated__'),
     },
+  },
+  test: {
+    css: true,
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './src/test-setup.ts',
   },
 });
