@@ -50,7 +50,7 @@ type ColumnsData = Record<Exclude<ColumnId, 'actions'>, string | number | null |
 type TableCellItemData = Partial<ColumnsData> | null;
 type TableCellItemProps = { column: ColumnId; data: TableCellItemData };
 
-function TableCellItem({ column, data }: TableCellItemProps) {
+export function TableCellItem({ column, data }: TableCellItemProps) {
   if (!data) return null;
   if (column === 'id') {
     return (
@@ -93,7 +93,6 @@ function TableCellItem({ column, data }: TableCellItemProps) {
 export function Loans() {
   const [selectedColumns, setSelectedColumns] = useState(columnIds);
   const { data, error } = useGetLoans();
-  console.log('data: ', data);
 
   const handleColumnToggle = useCallback((column: ColumnId) => {
     setSelectedColumns((prevColumns) =>
