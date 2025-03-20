@@ -9,7 +9,13 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
-const ignores = ['dist', '**/*.md', 'codegen.ts', '**/__generated__/**/*.{ts,tsx}'];
+const ignores = [
+  'dist',
+  '**/*.md',
+  'codegen.ts',
+  '**/__generated__/**/*.{ts,tsx}',
+  '**/components/ui/*.{ts,tsx}', // ignore to maintain compat with shadcn
+];
 
 export default tseslint.config(
   { ignores: [...ignores] },
