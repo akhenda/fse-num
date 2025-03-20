@@ -80,7 +80,12 @@ export default tseslint.config(
   /**
    * eslint-plugin-sonarjs
    */
-  { extends: [sonarjs.configs.recommended], rules: {} },
+  {
+    extends: [sonarjs.configs.recommended],
+    rules: {
+      'sonarjs/todo-tag': 'warn',
+    },
+  },
 
   /**
    * eslint-plugin-unused-imports
