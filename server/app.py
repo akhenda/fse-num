@@ -53,11 +53,21 @@ class ExistingLoans(graphene.ObjectType):
     due_date = graphene.Date()
 
 
+class ExistingLoanPayments(graphene.ObjectType):
+    id = graphene.Int()
+    loan_id = graphene.Int()
+    payment_date = graphene.Date()
+
+
 class Query(graphene.ObjectType):
     loans = graphene.List(ExistingLoans)
+    loan_payments = graphene.List(ExistingLoanPayments)
 
     def resolve_loans(self, info):
         return loans
+
+    def resolve_loan_payments(self, info):
+        return loan_payments
 
 
 schema = graphene.Schema(query=Query)
