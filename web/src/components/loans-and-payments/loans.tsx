@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import { Eye, Pencil, Trash } from 'lucide-react';
+import { Coins, Eye } from 'lucide-react';
 
 import { useGetLoans } from '@/api/graphql/resources';
 import { Button } from '@/components/ui/button';
@@ -20,6 +20,17 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { formatAmount, formatDate } from '@/lib/payments';
+
+import { AddNewPayment } from '../add-new-payment';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '../ui/dialog';
 
 import { EmptyState } from './empty-state';
 import { ErrorState } from './error-state';
@@ -51,21 +62,29 @@ function TableCellItem({ column, data }: TableCellItemProps) {
 
   if (column === 'actions') {
     return (
-      <div className="flex items-center gap-2">
-        <Button variant="outline" size="icon">
-          <Pencil className="size-4" />
-        </Button>
-        <Button variant="outline" size="icon">
-          <Trash className="size-4" />
-        </Button>
-      </div>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline" size="icon">
+            <Coins className="size-4" />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Add New Payment</DialogTitle>
+            <DialogDescription>
+              Add a new loan payment. Click save when you're done.
+            </DialogDescription>
+          </DialogHeader>
+          <AddNewPayment inDialog loanId={data.id ?? ''} />
+        </DialogContent>
+      </Dialog>
     );
   }
 
-  if (column === 'dueDate') return data.dueDate ? new Date(data.dueDate).toDateString() : null;
+  if (column === 'dueDate') return data.dueDate ? formatDate(new Date(data.dueDate)) : null;
   if (column === 'interestRate') return data.interestRate ? `${data.interestRate}%` : null;
   if (column === 'principal') {
-    return data.principal ? new Date(data.principal).toDateString() : null;
+    return data.principal ? formatAmount(Number(data.principal)) : null;
   }
 
   return data[column];
@@ -74,6 +93,7 @@ function TableCellItem({ column, data }: TableCellItemProps) {
 export function Loans() {
   const [selectedColumns, setSelectedColumns] = useState(columnIds);
   const { data, error } = useGetLoans();
+  console.log('data: ', data);
 
   const handleColumnToggle = useCallback((column: ColumnId) => {
     setSelectedColumns((prevColumns) =>

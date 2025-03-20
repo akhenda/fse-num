@@ -37,12 +37,9 @@ const formSchema = z.object({
 });
 
 type FormSchema = z.infer<typeof formSchema>;
-type AddNewPaymentProps = {
-  date?: Date;
-  loanId?: number | string;
-};
+type AddNewPaymentProps = { inDialog?: boolean; date?: Date; loanId?: number | string };
 
-export function AddNewPayment({ date = new Date(), loanId = '' }: AddNewPaymentProps) {
+export function AddNewPayment({ inDialog, date = new Date(), loanId = '' }: AddNewPaymentProps) {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: { loanId, date } as unknown as FormSchema,
@@ -53,7 +50,7 @@ export function AddNewPayment({ date = new Date(), loanId = '' }: AddNewPaymentP
   }
 
   return (
-    <div className="p-4">
+    <div className={cn('p-4', { 'p-0': inDialog })}>
       <h3 className="text-base mb-3 font-bold">Add New Payment</h3>
       <Form {...form}>
         <form
@@ -118,7 +115,7 @@ export function AddNewPayment({ date = new Date(), loanId = '' }: AddNewPaymentP
               </FormItem>
             )}
           />
-          <div className="block">
+          <div className={cn('block', { 'flex w-full justify-end': inDialog })}>
             <LoadingButton
               type="submit"
               isLoading={
