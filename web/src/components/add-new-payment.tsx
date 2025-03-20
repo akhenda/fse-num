@@ -15,9 +15,11 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { logger } from '@/lib/logger';
 import { cn } from '@/lib/utils';
 
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
+import { LoadingButton } from './loading-button';
 const formSchema = z.object({
   date: z.coerce.date(),
   loanId: z.preprocess(
@@ -39,21 +41,25 @@ type AddNewPaymentProps = {
   loanId?: number | string;
 };
 
-export function AddNewPayment({ date, loanId }: AddNewPaymentProps) {
+export function AddNewPayment({ date = new Date(), loanId = '' }: AddNewPaymentProps) {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: { loanId, date } as unknown as FormSchema,
   });
 
   function onSubmit(values: FormSchema) {
-    console.log(values);
+    logger.success('Values:', values.date, values.loanId);
   }
 
   return (
-    <div>
-      <h3>Add New Payment</h3>
+    <div className="p-4">
+      <h3 className="text-base mb-3 font-bold">Add New Payment</h3>
       <Form {...form}>
-        <form noValidate onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form
+          noValidate
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="space-y-5 max-w-3xl mx-auto py-2"
+        >
           <FormField
             control={form.control}
             name="loanId"
@@ -63,7 +69,9 @@ export function AddNewPayment({ date, loanId }: AddNewPaymentProps) {
                 <FormControl>
                   <Input type="number" placeholder="1234" {...field} />
                 </FormControl>
-                <FormDescription>The loan ID</FormDescription>
+                <FormDescription className="text-xs text-muted-foreground">
+                  The loan ID
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -79,9 +87,9 @@ export function AddNewPayment({ date, loanId }: AddNewPaymentProps) {
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
-                        variant={'outline'}
+                        variant="outline"
                         className={cn(
-                          'w-[240px] pl-3 text-left font-normal',
+                          'w-full pl-3 text-left font-normal',
                           !field.value && 'text-muted-foreground',
                         )}
                       >
@@ -102,12 +110,25 @@ export function AddNewPayment({ date, loanId }: AddNewPaymentProps) {
                     />
                   </PopoverContent>
                 </Popover>
-                <FormDescription>When did you make the payment</FormDescription>
+                <FormDescription className="text-xs text-muted-foreground">
+                  When did you make the payment
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Add Payment</Button>
+          <div className="block">
+            <LoadingButton
+              type="submit"
+              isLoading={
+                form.formState.isSubmitting ||
+                form.formState.isLoading ||
+                form.formState.isValidating
+              }
+            >
+              Add Payment
+            </LoadingButton>
+          </div>
         </form>
       </Form>
     </div>
